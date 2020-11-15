@@ -6,4 +6,5 @@ authors = ["Sébastien Helleu <flashcode@flashtux.org>"]
 license = "GPL3"
 homepage = "https://github.com/flashcode/nb2fr"
 repository = "https://github.com/flashcode/nb2fr"
+documentation = "https://docs.rs/nb2fr/"
 edition = "2018"
