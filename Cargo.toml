@@ -1,7 +1,7 @@
 [package]
 name = "nb2fr"
 description = "Convert integer number to literal French text."
-version = "0.1.2"
+version = "0.2.0-dev"
 authors = ["Sébastien Helleu <flashcode@flashtux.org>"]
 license = "GPL-3.0"
 readme = "README.md"
