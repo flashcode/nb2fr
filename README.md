@@ -1,8 +1,6 @@
-# nb2fr
+# Convert integer numbers to literal French text
 
 [![Build Status](https://github.com/flashcode/nb2fr/workflows/CI/badge.svg)](https://github.com/flashcode/nb2fr/actions?query=workflow%3A%22CI%22)
-
-Nb2fr converts an integer number to literal French text.
 
 Integer numbers from `-9 223 372 036 854 775 808` to `9 223 372 036 854 775 807` are accepted.
 
