@@ -25,20 +25,18 @@
 //    cent vingt-trois mille quatre cent cinquante-six
 //
 
+use nb2fr::nb2fr;
+
 fn main() {
     let args: Vec<String> = std::env::args().collect();
-    match args.len() {
-        0..=1 => {
-            eprintln!("Syntax: {} number [number...]", args[0]);
-            std::process::exit(1);
-        },
-        _ => {
-            for arg in args[1..].iter() {
-                match arg.parse::<i64>() {
-                    Ok(number) => println!("{}", nb2fr::nb2fr(number)),
-                    Err(_err) => eprintln!("Invalid integer: {}", arg),
-                }
-            }
+    if args.len() < 2 {
+        eprintln!("Syntax: {} number [number...]", args[0]);
+        std::process::exit(1);
+    }
+    for arg in &args[1..] {
+        match arg.parse::<i64>() {
+            Ok(number) => println!("{}", nb2fr(number)),
+            Err(_err) => eprintln!("Invalid integer: {}", arg),
         }
     }
 }
