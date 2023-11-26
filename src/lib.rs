@@ -17,7 +17,9 @@
 // along with nb2fr.  If not, see <https://www.gnu.org/licenses/>.
 //
 
-/// Converts an integer to literal French text.
+//! Convert numbers to literal French text.
+
+/// Convert a 64-bit integer to literal French text.
 ///
 /// # Examples:
 ///
