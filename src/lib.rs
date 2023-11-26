@@ -59,9 +59,9 @@ pub fn nb2fr(number: i64) -> String {
     if number == 0 {
         return String::from("zéro");
     }
-    let mut result = String::new();
+    let mut result: Vec<String> = Vec::new();
     if number < 0 {
-        result.push_str("moins");
+        result.push(String::from("moins"));
     }
     let mut str_number = number.to_string().replace("-", "");
     let zeroes_to_add = (3 - (str_number.len() % 3)) % 3;
@@ -75,42 +75,27 @@ pub fn nb2fr(number: i64) -> String {
             if num_grp3 != 1 || nb3 != 1 {
                 if num_grp3 > 99 {
                     if num_grp3 / 100 > 1 {
-                        if !result.is_empty() {
-                            result.push(' ');
-                        }
                         let index_num = (num_grp3 / 100) - 1;
-                        result.push_str(number_1_99[index_num as usize]);
+                        result.push(String::from(number_1_99[index_num as usize]));
                     }
-                    if !result.is_empty() {
-                        result.push(' ');
-                    }
-                    result.push_str("cent");
-                    if num_grp3 / 100 > 1 && num_grp3 % 100 == 0 {
-                        result.push('s')
-                    }
+                    let plural = if num_grp3 / 100 > 1 && num_grp3 % 100 == 0
+                        { "s" } else { "" };
+                    result.push(String::from("cent") + plural);
                 }
                 if num_grp3 % 100 != 0 {
-                    if !result.is_empty() {
-                        result.push(' ');
-                    }
                     let index_num = (num_grp3 % 100) - 1;
-                    result.push_str(number_1_99[index_num as usize]);
+                    result.push(String::from(number_1_99[index_num as usize]));
                 }
             }
             if nb3 > 0 {
-                if !result.is_empty() {
-                    result.push(' ');
-                }
-                result.push_str(number_1000[(nb3 - 1) as usize]);
-                if num_grp3 > 1 && nb3 > 1 {
-                    result.push('s');
-                }
+                let plural = if num_grp3 > 1 && nb3 > 1 { "s" } else { "" };
+                result.push(String::from(number_1000[(nb3 - 1) as usize]) + plural);
             }
         }
         index += 3;
         nb3 -= 1;
     }
-    result
+    result.join(" ")
 }
 
 #[cfg(test)]
