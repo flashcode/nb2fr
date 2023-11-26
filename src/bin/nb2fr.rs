@@ -33,6 +33,10 @@ fn main() {
         eprintln!("Syntax: {} number [number...]", args[0]);
         std::process::exit(1);
     }
+    if args[1] == "-v" || args[1] == "--version" {
+        println!("{}", env!("CARGO_PKG_VERSION"));
+        std::process::exit(0);
+    }
     for arg in &args[1..] {
         match arg.parse::<i64>() {
             Ok(number) => println!("{}", nb2fr(number)),

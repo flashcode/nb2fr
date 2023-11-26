@@ -1,5 +1,9 @@
 # Nb2fr ChangeLog
 
+## Version 0.2.0 (under dev)
+
+- Add command line option `-v` / `--version`.
+
 ## Version 0.1.2 (2020-11-15)
 
 - Fix license name and add README in Cargo.toml.
