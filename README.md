@@ -1,3 +1,9 @@
+<!--
+SPDX-FileCopyrightText: 2020-2025 Sébastien Helleu <flashcode@flashtux.org>
+
+SPDX-License-Identifier: GPL-3.0-or-later
+-->
+
 # Convert integer numbers to literal French text
 
 [![Crates.io](https://img.shields.io/crates/v/nb2fr.svg)](https://crates.io/crates/nb2fr)
@@ -30,6 +36,7 @@ six millions huit cent vingt-quatre mille sept cent dix-huit
 
 ## Copyright
 
+<!-- REUSE-IgnoreStart -->
 Copyright © 2020-2025 [Sébastien Helleu](https://github.com/flashcode)
 
 This program is free software; you can redistribute it and/or modify
@@ -44,3 +51,4 @@ GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
 along with this program.  If not, see <https://www.gnu.org/licenses/>.
+<!-- REUSE-IgnoreEnd -->
