@@ -27,7 +27,7 @@ fn main() {
 From command line:
 
 ```
-$ cargo run -q 0 -15 123456 6824718
+$ nb2fr 0 -15 123456 6824718
 zéro
 moins quinze
 cent vingt-trois mille quatre cent cinquante-six
