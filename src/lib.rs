@@ -1,5 +1,5 @@
 //
-// SPDX-FileCopyrightText: 2020-2025 Sébastien Helleu <flashcode@flashtux.org>
+// SPDX-FileCopyrightText: 2020-2026 Sébastien Helleu <flashcode@flashtux.org>
 //
 // SPDX-License-Identifier: GPL-3.0-or-later
 //
@@ -31,30 +31,104 @@
 ///     assert_eq!(nb2fr::nb2fr(2_000_000_000), "deux milliards");
 pub fn nb2fr(number: i64) -> String {
     let number_1_99 = [
-        "un", "deux", "trois", "quatre", "cinq", "six", "sept", "huit", "neuf",
-        "dix", "onze", "douze", "treize", "quatorze", "quinze", "seize",
-        "dix-sept", "dix-huit", "dix-neuf", "vingt", "vingt et un",
-        "vingt-deux", "vingt-trois", "vingt-quatre", "vingt-cinq", "vingt-six",
-        "vingt-sept", "vingt-huit", "vingt-neuf", "trente", "trente et un",
-        "trente-deux", "trente-trois", "trente-quatre", "trente-cinq",
-        "trente-six", "trente-sept", "trente-huit", "trente-neuf", "quarante",
-        "quarante et un", "quarante-deux", "quarante-trois", "quarante-quatre",
-        "quarante-cinq", "quarante-six", "quarante-sept", "quarante-huit",
-        "quarante-neuf", "cinquante", "cinquante et un", "cinquante-deux",
-        "cinquante-trois", "cinquante-quatre", "cinquante-cinq",
-        "cinquante-six", "cinquante-sept", "cinquante-huit", "cinquante-neuf",
-        "soixante", "soixante et un", "soixante-deux", "soixante-trois",
-        "soixante-quatre", "soixante-cinq", "soixante-six", "soixante-sept",
-        "soixante-huit", "soixante-neuf", "soixante-dix", "soixante et onze",
-        "soixante-douze", "soixante-treize", "soixante-quatorze",
-        "soixante-quinze", "soixante-seize", "soixante-dix-sept",
-        "soixante-dix-huit", "soixante-dix-neuf", "quatre-vingts",
-        "quatre-vingt-un", "quatre-vingt-deux", "quatre-vingt-trois",
-        "quatre-vingt-quatre", "quatre-vingt-cinq", "quatre-vingt-six",
-        "quatre-vingt-sept", "quatre-vingt-huit", "quatre-vingt-neuf",
-        "quatre-vingt-dix", "quatre-vingt-onze", "quatre-vingt-douze",
-        "quatre-vingt-treize", "quatre-vingt-quatorze", "quatre-vingt-quinze",
-        "quatre-vingt-seize", "quatre-vingt-dix-sept", "quatre-vingt-dix-huit",
+        "un",
+        "deux",
+        "trois",
+        "quatre",
+        "cinq",
+        "six",
+        "sept",
+        "huit",
+        "neuf",
+        "dix",
+        "onze",
+        "douze",
+        "treize",
+        "quatorze",
+        "quinze",
+        "seize",
+        "dix-sept",
+        "dix-huit",
+        "dix-neuf",
+        "vingt",
+        "vingt et un",
+        "vingt-deux",
+        "vingt-trois",
+        "vingt-quatre",
+        "vingt-cinq",
+        "vingt-six",
+        "vingt-sept",
+        "vingt-huit",
+        "vingt-neuf",
+        "trente",
+        "trente et un",
+        "trente-deux",
+        "trente-trois",
+        "trente-quatre",
+        "trente-cinq",
+        "trente-six",
+        "trente-sept",
+        "trente-huit",
+        "trente-neuf",
+        "quarante",
+        "quarante et un",
+        "quarante-deux",
+        "quarante-trois",
+        "quarante-quatre",
+        "quarante-cinq",
+        "quarante-six",
+        "quarante-sept",
+        "quarante-huit",
+        "quarante-neuf",
+        "cinquante",
+        "cinquante et un",
+        "cinquante-deux",
+        "cinquante-trois",
+        "cinquante-quatre",
+        "cinquante-cinq",
+        "cinquante-six",
+        "cinquante-sept",
+        "cinquante-huit",
+        "cinquante-neuf",
+        "soixante",
+        "soixante et un",
+        "soixante-deux",
+        "soixante-trois",
+        "soixante-quatre",
+        "soixante-cinq",
+        "soixante-six",
+        "soixante-sept",
+        "soixante-huit",
+        "soixante-neuf",
+        "soixante-dix",
+        "soixante et onze",
+        "soixante-douze",
+        "soixante-treize",
+        "soixante-quatorze",
+        "soixante-quinze",
+        "soixante-seize",
+        "soixante-dix-sept",
+        "soixante-dix-huit",
+        "soixante-dix-neuf",
+        "quatre-vingts",
+        "quatre-vingt-un",
+        "quatre-vingt-deux",
+        "quatre-vingt-trois",
+        "quatre-vingt-quatre",
+        "quatre-vingt-cinq",
+        "quatre-vingt-six",
+        "quatre-vingt-sept",
+        "quatre-vingt-huit",
+        "quatre-vingt-neuf",
+        "quatre-vingt-dix",
+        "quatre-vingt-onze",
+        "quatre-vingt-douze",
+        "quatre-vingt-treize",
+        "quatre-vingt-quatorze",
+        "quatre-vingt-quinze",
+        "quatre-vingt-seize",
+        "quatre-vingt-dix-sept",
+        "quatre-vingt-dix-huit",
         "quatre-vingt-dix-neuf",
     ];
     let number_1000 = [
@@ -82,8 +156,11 @@ pub fn nb2fr(number: i64) -> String {
                         let index_num = (num_grp3 / 100) - 1;
                         result.push(String::from(number_1_99[index_num as usize]));
                     }
-                    let plural = if num_grp3 / 100 > 1 && num_grp3 % 100 == 0
-                        { "s" } else { "" };
+                    let plural = if num_grp3 / 100 > 1 && num_grp3 % 100 == 0 {
+                        "s"
+                    } else {
+                        ""
+                    };
                     result.push(String::from("cent") + plural);
                 }
                 if num_grp3 % 100 != 0 {
@@ -115,36 +192,44 @@ mod tests {
         assert_eq!(nb2fr(100), "cent");
         assert_eq!(nb2fr(123), "cent vingt-trois");
         assert_eq!(nb2fr(200), "deux cents");
-        assert_eq!(nb2fr(123_456_789),
-                   "cent vingt-trois millions \
+        assert_eq!(
+            nb2fr(123_456_789),
+            "cent vingt-trois millions \
                     quatre cent cinquante-six mille \
-                    sept cent quatre-vingt-neuf");
-        assert_eq!(nb2fr(123_456_789_012),
-                   "cent vingt-trois milliards \
+                    sept cent quatre-vingt-neuf"
+        );
+        assert_eq!(
+            nb2fr(123_456_789_012),
+            "cent vingt-trois milliards \
                     quatre cent cinquante-six millions \
                     sept cent quatre-vingt-neuf mille \
-                    douze");
+                    douze"
+        );
         assert_eq!(nb2fr(2_000), "deux mille");
         assert_eq!(nb2fr(2_000_000), "deux millions");
         assert_eq!(nb2fr(2_000_000_000), "deux milliards");
         assert_eq!(nb2fr(2_000_000_000_000), "deux billions");
         assert_eq!(nb2fr(2_000_000_000_000_000), "deux billiards");
         assert_eq!(nb2fr(2_000_000_000_000_000_000), "deux trillions");
-        assert_eq!(nb2fr(i64::MIN), // -9_223_372_036_854_775_808
-                   "moins neuf trillions \
+        assert_eq!(
+            nb2fr(i64::MIN), // -9_223_372_036_854_775_808
+            "moins neuf trillions \
                     deux cent vingt-trois billiards \
                     trois cent soixante-douze billions \
                     trente-six milliards \
                     huit cent cinquante-quatre millions \
                     sept cent soixante-quinze mille \
-                    huit cent huit");
-        assert_eq!(nb2fr(i64::MAX), // 9_223_372_036_854_775_807
-                   "neuf trillions \
+                    huit cent huit"
+        );
+        assert_eq!(
+            nb2fr(i64::MAX), // 9_223_372_036_854_775_807
+            "neuf trillions \
                     deux cent vingt-trois billiards \
                     trois cent soixante-douze billions \
                     trente-six milliards \
                     huit cent cinquante-quatre millions \
                     sept cent soixante-quinze mille \
-                    huit cent sept");
+                    huit cent sept"
+        );
     }
 }
