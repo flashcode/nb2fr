@@ -146,6 +146,8 @@ pub fn nb2fr(number: i64) -> String {
         result.push(String::from("moins"));
     }
     let mut str_number = number.unsigned_abs().to_string();
+    // Pad with leading zeroes to have a multiple of 3 digits,
+    // for example: "1234" -> "001234".
     let zeroes_to_add = (3 - (str_number.len() % 3)) % 3;
     str_number.insert_str(0, &"0".repeat(zeroes_to_add));
     let mut nb3 = str_number.len() / 3;
