@@ -25,7 +25,7 @@
 //! - from [`i128::MIN`] (`-170 141 183 460 469 231 731 687 303 715 884 105 728`)
 //! - to [`i128::MAX`] (`170 141 183 460 469 231 731 687 303 715 884 105 727`).
 
-const NUMBER_1_99: [&str; 99] = [
+pub const NUMBER_FR_1_99: [&str; 99] = [
     "un",
     "deux",
     "trois",
@@ -126,7 +126,7 @@ const NUMBER_1_99: [&str; 99] = [
     "quatre-vingt-dix-huit",
     "quatre-vingt-dix-neuf",
 ];
-const NUMBER_1000: [&str; 12] = [
+pub const NUMBER_FR_1000: [&str; 12] = [
     "mille",
     "million",
     "milliard",
@@ -175,7 +175,9 @@ pub fn nb2fr(number: i128) -> String {
             if num_grp3 != 1 || nb3 != 2 {
                 if num_grp3 > 99 {
                     if num_grp3 / 100 > 1 {
-                        result.push(String::from(NUMBER_1_99[((num_grp3 as usize) / 100) - 1]));
+                        result.push(String::from(
+                            NUMBER_FR_1_99[((num_grp3 as usize) / 100) - 1],
+                        ));
                     }
                     let plural = if num_grp3 / 100 > 1 && num_grp3 % 100 == 0 {
                         "s"
@@ -185,12 +187,14 @@ pub fn nb2fr(number: i128) -> String {
                     result.push(String::from("cent") + plural);
                 }
                 if num_grp3 % 100 != 0 {
-                    result.push(String::from(NUMBER_1_99[((num_grp3 as usize) % 100) - 1]));
+                    result.push(String::from(
+                        NUMBER_FR_1_99[((num_grp3 as usize) % 100) - 1],
+                    ));
                 }
             }
             if nb3 > 1 {
                 let plural = if num_grp3 > 1 && nb3 > 2 { "s" } else { "" };
-                result.push(String::from(NUMBER_1000[nb3 - 2]) + plural);
+                result.push(String::from(NUMBER_FR_1000[nb3 - 2]) + plural);
             }
         }
         index += 3;
