@@ -11,6 +11,7 @@ SPDX-License-Identifier: GPL-3.0-or-later
 ### Added
 
 - Support 128 bits integers
+- Switch to Rust edition 2024
 - Add command line option `-v` / `--version`
 
 ## Version 0.1.2 (2020-11-15)

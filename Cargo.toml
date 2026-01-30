@@ -1,4 +1,4 @@
-# SPDX-FileCopyrightText: 2020-2025 Sébastien Helleu <flashcode@flashtux.org>
+# SPDX-FileCopyrightText: 2020-2026 Sébastien Helleu <flashcode@flashtux.org>
 #
 # SPDX-License-Identifier: GPL-3.0-or-later
 
@@ -12,4 +12,4 @@ readme = "README.md"
 homepage = "https://github.com/flashcode/nb2fr"
 repository = "https://github.com/flashcode/nb2fr"
 documentation = "https://docs.rs/nb2fr/"
-edition = "2018"
+edition = "2024"
