@@ -136,6 +136,7 @@ const NUMBER_1000: [&str; 6] = [
 /// assert_eq!(nb2fr::nb2fr(123), "cent vingt-trois");
 /// assert_eq!(nb2fr::nb2fr(2_000_000_000), "deux milliards");
 /// ```
+#[must_use]
 pub fn nb2fr(number: i64) -> String {
     if number == 0 {
         return String::from("zéro");
@@ -150,8 +151,9 @@ pub fn nb2fr(number: i64) -> String {
     let mut nb3 = str_number.len() / 3;
     let mut index = 0;
     while nb3 > 0 {
-        let grp3 = &str_number[index..index + 3];
-        let num_grp3 = grp3.parse::<u32>().unwrap();
+        let num_grp3 = str_number[index..index + 3]
+            .parse::<u32>()
+            .unwrap_or_default();
         if num_grp3 > 0 {
             if num_grp3 != 1 || nb3 != 2 {
                 if num_grp3 > 99 {
