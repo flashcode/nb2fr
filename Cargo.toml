@@ -4,12 +4,14 @@
 
 [package]
 name = "nb2fr"
-description = "Convert integer number to literal French text."
 version = "0.2.0-dev"
 authors = ["Sébastien Helleu <flashcode@flashtux.org>"]
-license = "GPL-3.0-or-later"
+edition = "2024"
+description = "Convert integer number to literal French text."
+documentation = "https://docs.rs/nb2fr/"
 readme = "README.md"
 homepage = "https://github.com/flashcode/nb2fr"
 repository = "https://github.com/flashcode/nb2fr"
-documentation = "https://docs.rs/nb2fr/"
-edition = "2024"
+license = "GPL-3.0-or-later"
+keywords = ["integer", "literal", "french"]
+categories = ["finance", "mathematics", "value-formatting"]
