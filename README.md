@@ -4,11 +4,13 @@ SPDX-FileCopyrightText: 2020-2026 Sébastien Helleu <flashcode@flashtux.org>
 SPDX-License-Identifier: GPL-3.0-or-later
 -->
 
-# Convert integer numbers to literal French text
+# Nb2fr
 
 [![Crates.io](https://img.shields.io/crates/v/nb2fr.svg)](https://crates.io/crates/nb2fr)
 [![Build status](https://github.com/flashcode/nb2fr/workflows/CI/badge.svg)](https://github.com/flashcode/nb2fr/actions?query=workflow%3A%22CI%22)
 [![REUSE status](https://api.reuse.software/badge/github.com/flashcode/nb2fr)](https://api.reuse.software/info/github.com/flashcode/nb2fr)
+
+Nb2fr converts integer numbers to literal French text.
 
 Signed 128-bit integers are supported:
 
