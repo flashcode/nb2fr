@@ -44,9 +44,9 @@ fn main() {
         std::process::exit(0);
     }
     for arg in &args[1..] {
-        match arg.parse::<i64>() {
+        match arg.parse::<i128>() {
             Ok(number) => println!("{}", nb2fr(number)),
-            Err(_err) => eprintln!("Invalid integer: {}", arg),
+            Err(_err) => eprintln!("Invalid integer: {arg}"),
         }
     }
 }

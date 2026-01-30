@@ -10,7 +10,10 @@ SPDX-License-Identifier: GPL-3.0-or-later
 [![Build status](https://github.com/flashcode/nb2fr/workflows/CI/badge.svg)](https://github.com/flashcode/nb2fr/actions?query=workflow%3A%22CI%22)
 [![REUSE status](https://api.reuse.software/badge/github.com/flashcode/nb2fr)](https://api.reuse.software/info/github.com/flashcode/nb2fr)
 
-Integer numbers from `-9 223 372 036 854 775 808` to `9 223 372 036 854 775 807` are accepted.
+Signed 128-bit integers are supported:
+
+- from: `-170 141 183 460 469 231 731 687 303 715 884 105 728` (`i128::MIN` in Rust)
+- to: `170 141 183 460 469 231 731 687 303 715 884 105 727` (`i128::MAX` in Rust).
 
 ## Usage
 
@@ -27,11 +30,12 @@ fn main() {
 From command line:
 
 ```shell
-$ nb2fr 0 -15 123456 6824718
+$ nb2fr 0 -15 123456 6824718 715884105727
 zéro
 moins quinze
 cent vingt-trois mille quatre cent cinquante-six
 six millions huit cent vingt-quatre mille sept cent dix-huit
+sept cent quinze milliards huit cent quatre-vingt-quatre millions cent cinq mille sept cent vingt-sept
 ```
 
 ## Copyright

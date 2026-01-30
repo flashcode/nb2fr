@@ -20,6 +20,10 @@
 //
 
 //! Convert numbers to literal French text.
+//!
+//! 128-bit signed integers are supported:
+//! - from [`i128::MIN`] (`-170 141 183 460 469 231 731 687 303 715 884 105 728`)
+//! - to [`i128::MAX`] (`170 141 183 460 469 231 731 687 303 715 884 105 727`).
 
 const NUMBER_1_99: [&str; 99] = [
     "un",
@@ -122,11 +126,22 @@ const NUMBER_1_99: [&str; 99] = [
     "quatre-vingt-dix-huit",
     "quatre-vingt-dix-neuf",
 ];
-const NUMBER_1000: [&str; 6] = [
-    "mille", "million", "milliard", "billion", "billiard", "trillion",
+const NUMBER_1000: [&str; 12] = [
+    "mille",
+    "million",
+    "milliard",
+    "billion",
+    "billiard",
+    "trillion",
+    "trilliard",
+    "quadrillion",
+    "quadrilliard",
+    "quintillion",
+    "quintilliard",
+    "sextillion",
 ];
 
-/// Convert a 64-bit integer to literal French text.
+/// Convert a signed 128-bit integer to literal French text.
 ///
 /// # Examples
 ///
@@ -137,7 +152,7 @@ const NUMBER_1000: [&str; 6] = [
 /// assert_eq!(nb2fr::nb2fr(2_000_000_000), "deux milliards");
 /// ```
 #[must_use]
-pub fn nb2fr(number: i64) -> String {
+pub fn nb2fr(number: i128) -> String {
     if number == 0 {
         return String::from("zéro");
     }
@@ -200,15 +215,15 @@ mod tests {
         assert_eq!(
             nb2fr(123_456_789),
             "cent vingt-trois millions \
-                    quatre cent cinquante-six mille \
-                    sept cent quatre-vingt-neuf"
+            quatre cent cinquante-six mille \
+            sept cent quatre-vingt-neuf"
         );
         assert_eq!(
             nb2fr(123_456_789_012),
             "cent vingt-trois milliards \
-                    quatre cent cinquante-six millions \
-                    sept cent quatre-vingt-neuf mille \
-                    douze"
+            quatre cent cinquante-six millions \
+            sept cent quatre-vingt-neuf mille \
+            douze"
         );
         assert_eq!(nb2fr(2_000), "deux mille");
         assert_eq!(nb2fr(2_000_000), "deux millions");
@@ -216,25 +231,58 @@ mod tests {
         assert_eq!(nb2fr(2_000_000_000_000), "deux billions");
         assert_eq!(nb2fr(2_000_000_000_000_000), "deux billiards");
         assert_eq!(nb2fr(2_000_000_000_000_000_000), "deux trillions");
+        assert_eq!(nb2fr(2_000_000_000_000_000_000_000), "deux trilliards");
         assert_eq!(
-            nb2fr(i64::MIN), // -9_223_372_036_854_775_808
-            "moins neuf trillions \
-                    deux cent vingt-trois billiards \
-                    trois cent soixante-douze billions \
-                    trente-six milliards \
-                    huit cent cinquante-quatre millions \
-                    sept cent soixante-quinze mille \
-                    huit cent huit"
+            nb2fr(2_000_000_000_000_000_000_000_000),
+            "deux quadrillions"
         );
         assert_eq!(
-            nb2fr(i64::MAX), // 9_223_372_036_854_775_807
-            "neuf trillions \
-                    deux cent vingt-trois billiards \
-                    trois cent soixante-douze billions \
-                    trente-six milliards \
-                    huit cent cinquante-quatre millions \
-                    sept cent soixante-quinze mille \
-                    huit cent sept"
+            nb2fr(2_000_000_000_000_000_000_000_000_000),
+            "deux quadrilliards"
+        );
+        assert_eq!(
+            nb2fr(2_000_000_000_000_000_000_000_000_000_000),
+            "deux quintillions"
+        );
+        assert_eq!(
+            nb2fr(2_000_000_000_000_000_000_000_000_000_000_000),
+            "deux quintilliards"
+        );
+        assert_eq!(
+            nb2fr(2_000_000_000_000_000_000_000_000_000_000_000_000),
+            "deux sextillions"
+        );
+        assert_eq!(
+            nb2fr(i128::MIN), // -170_141_183_460_469_231_731_687_303_715_884_105_728
+            "moins cent soixante-dix sextillions \
+            cent quarante et un quintilliards \
+            cent quatre-vingt-trois quintillions \
+            quatre cent soixante quadrilliards \
+            quatre cent soixante-neuf quadrillions \
+            deux cent trente et un trilliards \
+            sept cent trente et un trillions \
+            six cent quatre-vingt-sept billiards \
+            trois cent trois billions \
+            sept cent quinze milliards \
+            huit cent quatre-vingt-quatre millions \
+            cent cinq mille \
+            sept cent vingt-huit"
+        );
+        assert_eq!(
+            nb2fr(i128::MAX), // 170_141_183_460_469_231_731_687_303_715_884_105_727
+            "cent soixante-dix sextillions \
+            cent quarante et un quintilliards \
+            cent quatre-vingt-trois quintillions \
+            quatre cent soixante quadrilliards \
+            quatre cent soixante-neuf quadrillions \
+            deux cent trente et un trilliards \
+            sept cent trente et un trillions \
+            six cent quatre-vingt-sept billiards \
+            trois cent trois billions \
+            sept cent quinze milliards \
+            huit cent quatre-vingt-quatre millions \
+            cent cinq mille \
+            sept cent vingt-sept"
         );
     }
 }
