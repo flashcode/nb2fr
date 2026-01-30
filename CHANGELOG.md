@@ -6,7 +6,7 @@ SPDX-License-Identifier: GPL-3.0-or-later
 
 # Nb2fr ChangeLog
 
-## Version 0.2.0 (under dev)
+## Version 0.2.0 (2026-01-30)
 
 ### Added
 
