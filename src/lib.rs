@@ -147,17 +147,16 @@ pub fn nb2fr(number: i64) -> String {
     let mut str_number = number.unsigned_abs().to_string();
     let zeroes_to_add = (3 - (str_number.len() % 3)) % 3;
     str_number.insert_str(0, &"0".repeat(zeroes_to_add));
-    let mut nb3 = ((str_number.len() / 3) - 1) as i64;
+    let mut nb3 = str_number.len() / 3;
     let mut index = 0;
-    while nb3 >= 0 {
+    while nb3 > 0 {
         let grp3 = &str_number[index..index + 3];
-        let num_grp3 = grp3.parse::<i64>().unwrap();
+        let num_grp3 = grp3.parse::<u32>().unwrap();
         if num_grp3 > 0 {
-            if num_grp3 != 1 || nb3 != 1 {
+            if num_grp3 != 1 || nb3 != 2 {
                 if num_grp3 > 99 {
                     if num_grp3 / 100 > 1 {
-                        let index_num = (num_grp3 / 100) - 1;
-                        result.push(String::from(NUMBER_1_99[index_num as usize]));
+                        result.push(String::from(NUMBER_1_99[((num_grp3 as usize) / 100) - 1]));
                     }
                     let plural = if num_grp3 / 100 > 1 && num_grp3 % 100 == 0 {
                         "s"
@@ -167,13 +166,12 @@ pub fn nb2fr(number: i64) -> String {
                     result.push(String::from("cent") + plural);
                 }
                 if num_grp3 % 100 != 0 {
-                    let index_num = (num_grp3 % 100) - 1;
-                    result.push(String::from(NUMBER_1_99[index_num as usize]));
+                    result.push(String::from(NUMBER_1_99[((num_grp3 as usize) % 100) - 1]));
                 }
             }
-            if nb3 > 0 {
-                let plural = if num_grp3 > 1 && nb3 > 1 { "s" } else { "" };
-                result.push(String::from(NUMBER_1000[(nb3 - 1) as usize]) + plural);
+            if nb3 > 1 {
+                let plural = if num_grp3 > 1 && nb3 > 2 { "s" } else { "" };
+                result.push(String::from(NUMBER_1000[nb3 - 2]) + plural);
             }
         }
         index += 3;
