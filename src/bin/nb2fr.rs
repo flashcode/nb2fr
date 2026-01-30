@@ -1,5 +1,5 @@
 //
-// SPDX-FileCopyrightText: 2020-2025 Sébastien Helleu <flashcode@flashtux.org>
+// SPDX-FileCopyrightText: 2020-2026 Sébastien Helleu <flashcode@flashtux.org>
 //
 // SPDX-License-Identifier: GPL-3.0-or-later
 //
@@ -19,13 +19,17 @@
 // along with nb2fr.  If not, see <https://www.gnu.org/licenses/>.
 //
 
-//
-// Convert numbers to literal French text.
-//
-// Example:
-//    $ ./nb2fr 123456
-//    cent vingt-trois mille quatre cent cinquante-six
-//
+//! Convert numbers to literal French text.
+//!
+//! # Examples
+//!
+//! ```shell
+//! $ nb2fr 123456
+//! cent vingt-trois mille quatre cent cinquante-six
+//!
+//! $ nb2fr -42
+//! moins quarante-deux
+//! ```
 
 use nb2fr::nb2fr;
 

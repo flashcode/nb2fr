@@ -23,12 +23,14 @@
 
 /// Convert a 64-bit integer to literal French text.
 ///
-/// # Examples:
+/// # Examples
 ///
-///     assert_eq!(nb2fr::nb2fr(0), "zéro");
-///     assert_eq!(nb2fr::nb2fr(-42), "moins quarante-deux");
-///     assert_eq!(nb2fr::nb2fr(123), "cent vingt-trois");
-///     assert_eq!(nb2fr::nb2fr(2_000_000_000), "deux milliards");
+/// ```
+/// assert_eq!(nb2fr::nb2fr(0), "zéro");
+/// assert_eq!(nb2fr::nb2fr(-42), "moins quarante-deux");
+/// assert_eq!(nb2fr::nb2fr(123), "cent vingt-trois");
+/// assert_eq!(nb2fr::nb2fr(2_000_000_000), "deux milliards");
+/// ```
 pub fn nb2fr(number: i64) -> String {
     let number_1_99 = [
         "un",
