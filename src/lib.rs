@@ -144,7 +144,7 @@ pub fn nb2fr(number: i64) -> String {
     if number < 0 {
         result.push(String::from("moins"));
     }
-    let mut str_number = number.to_string().replace("-", "");
+    let mut str_number = number.unsigned_abs().to_string();
     let zeroes_to_add = (3 - (str_number.len() % 3)) % 3;
     str_number.insert_str(0, &"0".repeat(zeroes_to_add));
     let mut nb3 = ((str_number.len() / 3) - 1) as i64;
