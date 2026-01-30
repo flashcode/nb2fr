@@ -1,5 +1,5 @@
 <!--
-SPDX-FileCopyrightText: 2020-2025 Sébastien Helleu <flashcode@flashtux.org>
+SPDX-FileCopyrightText: 2020-2026 Sébastien Helleu <flashcode@flashtux.org>
 
 SPDX-License-Identifier: GPL-3.0-or-later
 -->
@@ -26,7 +26,7 @@ fn main() {
 
 From command line:
 
-```
+```shell
 $ nb2fr 0 -15 123456 6824718
 zéro
 moins quinze
@@ -37,7 +37,7 @@ six millions huit cent vingt-quatre mille sept cent dix-huit
 ## Copyright
 
 <!-- REUSE-IgnoreStart -->
-Copyright © 2020-2025 [Sébastien Helleu](https://github.com/flashcode)
+Copyright © 2020-2026 [Sébastien Helleu](https://github.com/flashcode)
 
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
